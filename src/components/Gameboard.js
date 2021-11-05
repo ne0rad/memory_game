@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 
-function Gameboard({ updateScore }) {
+function Gameboard({ updateScore, updateLevel }) {
     const [pokemon, setPokemon] = useState([]);
     const [allPokemon, setAllPokemon] = useState([]);
     const [correct, setCorrect] = useState([]);
@@ -18,7 +18,7 @@ function Gameboard({ updateScore }) {
 
     useEffect(() => {
         if (!loading) {
-            const randomPokemon = generateRandomPokemon();
+            const randomPokemon = generateRandomPokemon(3);
             setPokemon(randomPokemon);
             setCorrect(randomPokemon);
             for (let i = 1; i <= 151; i++) {
@@ -28,32 +28,15 @@ function Gameboard({ updateScore }) {
         }
     }, [loading]);
 
-    function generateRandomPokemon() {
+    function generateRandomPokemon(howMany) {
         let randomPokemon = [];
-        while (randomPokemon.length < 3) {
+        while (randomPokemon.length < howMany) {
             let random = Math.floor(Math.random() * 151 + 1);
             if (!randomPokemon.includes(random)) {
                 randomPokemon.push(random);
             }
         }
         return randomPokemon;
-    }
-
-    function addRandomPokemon() {
-        const tempCorrect = [];
-        const tempPokemon = [...pokemon];
-        let done = false;
-        while (!done) {
-            let random = Math.floor(Math.random() * 151 + 1);
-            if (!tempPokemon.includes(random)) {
-                tempPokemon.push(random);
-                tempCorrect.push(random);
-                done = true;
-            }
-        }
-        shuffle(tempPokemon);
-        setPokemon(tempPokemon);
-        setCorrect(tempCorrect);
     }
 
     function handleCardClick(id) {
@@ -64,7 +47,10 @@ function Gameboard({ updateScore }) {
             const tempCorrect = [...correct];
             tempCorrect.splice(index, 1);
             if (tempCorrect.length === 0) {
-                addRandomPokemon();
+                updateLevel(true);
+                const randomPokemon = generateRandomPokemon(pokemon.length + 1);
+                setPokemon(randomPokemon);
+                setCorrect(randomPokemon);
             } else {
                 const tempPokemon = [...pokemon];
                 shuffle(tempPokemon);
@@ -73,8 +59,9 @@ function Gameboard({ updateScore }) {
             }
         } else {
             updateScore(false);
+            updateLevel(false);
             cardGlow(false);
-            const randomPokemon = generateRandomPokemon();
+            const randomPokemon = generateRandomPokemon(3);
             setPokemon(randomPokemon);
             setCorrect(randomPokemon);
         }

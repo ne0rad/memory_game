@@ -1,11 +1,11 @@
-function Menu({ score, bestScore }) {
+function Menu({ score, bestScore, level }) {
     return (
         <div id="menu">
             <div id="score" className="menu-item">
                 Score: {score}
             </div>
             <div id="title" className="menu-item big">
-            Pokémon Memory Game
+            Level {level}
             </div>
             <div id="hiscore" className="menu-item">
                 Hi-Score: {bestScore}
