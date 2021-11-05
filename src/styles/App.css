@@ -33,10 +33,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   font-size: 15px;
   background-color: var(--background);
   color: white;
   min-width: 80px;
+  margin: 5px;
   padding: 10px 20px 10px 20px;
   border-radius: 5px;
   box-shadow: inset 0 0 0 1px white;
@@ -56,28 +58,43 @@ body {
   justify-content: space-between;
   flex-direction: column;
   width: 200px;
-  height: 300px;
+  height: 200px;
   border-radius: 5px;
   margin: 20px;
-  box-shadow: 0 0 0 1px white;
   background-color: var(--background);
+  box-shadow: 0 0 0 1px white;
   color: white;
   user-select: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: transform 0.2s;
 }
 
 .card:hover{
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 .card-title {
   text-align: center;
-  box-shadow: 0 0 0 1px white;
-  padding: 5px;
   background-color: #4262b9;
-  width: calc(100% - 10px);
+  border-bottom: 1px solid white;
+  padding: 3px 0 3px 0;
+  width: 100%;
   border-radius: 5px 5px 0 0;
+}
+
+.card-image {
+  width: 150px;
+  height: auto;
+}
+
+.red-glow {
+  box-shadow: 0 0 0 1px white,
+  0 0 12px 5px red;
+}
+
+.green-glow {
+  box-shadow: 0 0 0 1px white,
+  0 0 12px 5px yellowgreen;
 }
 
 .big {

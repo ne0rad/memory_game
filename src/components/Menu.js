@@ -5,7 +5,7 @@ function Menu({ score, bestScore }) {
                 Score: {score}
             </div>
             <div className="menu-item big">
-                Memory Game
+            Pokémon Memory Game
             </div>
             <div className="menu-item">
                 Hi-Score: {bestScore}
