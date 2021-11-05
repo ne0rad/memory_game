@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Memory Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a memory game application made for The Odin Project.
 
 ## Available Scripts
 
