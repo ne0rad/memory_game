@@ -12,7 +12,7 @@ body {
 }
 
 .App {
-  min-width: 490px;
+  min-width: 200px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -23,6 +23,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 800px;
   margin: 25px 0 25px 0;
@@ -118,4 +119,16 @@ body {
 
 .btn:hover {
   opacity: 1;
+}
+
+@media (max-width: 399px) {
+  #title {
+    order: 3;
+  }
+  #score {
+    order: 1;
+  }
+  #hiscore {
+    order: 2;
+  }
 }
