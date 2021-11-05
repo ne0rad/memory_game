@@ -59,7 +59,7 @@ function Gameboard({ updateScore }) {
 
     function updateCache() {
         const currentTime = new Date().getTime() / 1000 * 60;
-        if(currentTime - cacheTime > 1000 * 60 * 9) {
+        if(currentTime - cacheTime > 60 * 9) {
             for (let i = 1; i <= 151; i++) {
                 const img = new Image();
                 img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`;
