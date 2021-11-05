@@ -28,7 +28,6 @@ function Gameboard({ updateScore }) {
         }
     }, [loading]);
 
-    // generate 4 random pokemon id's. must be unique
     function generateRandomPokemon() {
         let randomPokemon = [];
         while (randomPokemon.length < 4) {
