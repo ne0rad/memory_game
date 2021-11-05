@@ -1,13 +1,13 @@
 function Menu({ score, bestScore }) {
     return (
         <div id="menu">
-            <div className="menu-item">
+            <div id="score" className="menu-item">
                 Score: {score}
             </div>
-            <div className="menu-item big">
+            <div id="title" className="menu-item big">
             Pokémon Memory Game
             </div>
-            <div className="menu-item">
+            <div id="hiscore" className="menu-item">
                 Hi-Score: {bestScore}
             </div>
         </div>

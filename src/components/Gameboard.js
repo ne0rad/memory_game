@@ -30,8 +30,8 @@ function Gameboard({ updateScore }) {
 
     function generateRandomPokemon() {
         let randomPokemon = [];
-        while (randomPokemon.length < 4) {
-            let random = Math.floor(Math.random() * 151);
+        while (randomPokemon.length < 3) {
+            let random = Math.floor(Math.random() * 151 + 1);
             if (!randomPokemon.includes(random)) {
                 randomPokemon.push(random);
             }
@@ -59,33 +59,29 @@ function Gameboard({ updateScore }) {
     function handleCardClick(id) {
         const index = correct.indexOf(id);
         if (index !== -1) {
-            cardGlow(id, true);
+            cardGlow(true);
             updateScore(true);
-            setTimeout(() => {
-                const tempCorrect = [...correct];
-                tempCorrect.splice(index, 1);
-                if (tempCorrect.length === 0) {
-                    addRandomPokemon();
-                } else {
-                    const tempPokemon = [...pokemon];
-                    shuffle(tempPokemon);
-                    setCorrect(tempCorrect);
-                    setPokemon(tempPokemon);
-                }
-            }, 500)
+            const tempCorrect = [...correct];
+            tempCorrect.splice(index, 1);
+            if (tempCorrect.length === 0) {
+                addRandomPokemon();
+            } else {
+                const tempPokemon = [...pokemon];
+                shuffle(tempPokemon);
+                setCorrect(tempCorrect);
+                setPokemon(tempPokemon);
+            }
         } else {
             updateScore(false);
-            cardGlow(id, false);
+            cardGlow(false);
             const randomPokemon = generateRandomPokemon();
-            setTimeout(() => {
-                setPokemon(randomPokemon);
-                setCorrect(randomPokemon);
-            }, 500)
+            setPokemon(randomPokemon);
+            setCorrect(randomPokemon);
         }
     }
 
     function shuffle(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+        let currentIndex = array.length, temporaryValue, randomIndex;
         while (0 !== currentIndex) {
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
@@ -97,27 +93,32 @@ function Gameboard({ updateScore }) {
     }
 
 
-    function cardGlow(id, color) {
+    function cardGlow(color) {
         // Add glow to the card depending if right or wrong
-        let card = document.getElementById(id);
+        let score = document.getElementById('score');
+        let hiscore = document.getElementById('hiscore');
+        let title = document.getElementById('title');
+
         if (!color) {
-            card.classList.add('red-glow');
+            score.classList.add('red-glow');
+            hiscore.classList.add('red-glow');
+            title.classList.add('red-glow');
 
-            // Remove glow on mouse leave
-            function removeGlow() {
-                card.classList.remove('red-glow');
-                card.removeEventListener('mouseleave', removeGlow);
-            }
-            card.addEventListener('mouseleave', removeGlow);
+            setTimeout(() => {
+                score.classList.remove('red-glow');
+                hiscore.classList.remove('red-glow');
+                title.classList.remove('red-glow');
+            }, 500);
         } else {
-            card.classList.add('green-glow');
+            score.classList.add('green-glow');
+            hiscore.classList.add('green-glow');
+            title.classList.add('green-glow');
 
-            // Remove glow on mouse leave
-            function removeGlow() {
-                card.classList.remove('green-glow');
-                card.removeEventListener('mouseleave', removeGlow);
-            }
-            card.addEventListener('mouseleave', removeGlow);
+            setTimeout(() => {
+                score.classList.remove('green-glow');
+                hiscore.classList.remove('green-glow');
+                title.classList.remove('green-glow');
+            }, 500);
         }
     }
 
