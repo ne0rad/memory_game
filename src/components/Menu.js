@@ -1,14 +1,14 @@
-function Menu() {
+function Menu({ score, bestScore }) {
     return (
         <div id="menu">
             <div className="menu-item">
-                Score: 0
+                Score: {score}
             </div>
             <div className="menu-item big">
                 Memory Game
             </div>
             <div className="menu-item">
-                Best Score: 0
+                Hi-Score: {bestScore}
             </div>
         </div>
     )
