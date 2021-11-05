@@ -21,10 +21,6 @@ function Gameboard({ updateScore, updateLevel }) {
             const randomPokemon = generateRandomPokemon(3);
             setPokemon(randomPokemon);
             setCorrect(randomPokemon);
-            for (let i = 1; i <= 151; i++) {
-                const img = new Image();
-                img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`;
-            }
         }
     }, [loading]);
 
