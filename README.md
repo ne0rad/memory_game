@@ -2,6 +2,8 @@
 
 This is a memory game application made for The Odin Project.
 
+Live Preview: https://ne0rad.github.io/memory_game/
+
 ## Available Scripts
 
 In the project directory, you can run:
