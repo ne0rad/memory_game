@@ -6,7 +6,7 @@ function Gameboard({ updateScore }) {
     const [allPokemon, setAllPokemon] = useState([]);
     const [correct, setCorrect] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [cacheTime, setCacheTime] = useState(new Date().getTime() / 1000 * 60)
+    const [cacheTime, setCacheTime] = useState(new Date().getTime() / 1000)
 
     useEffect(() => {
         fetch('https://pokeapi.co/api/v2/pokemon/?limit=151')
@@ -58,8 +58,9 @@ function Gameboard({ updateScore }) {
     }
 
     function updateCache() {
-        const currentTime = new Date().getTime() / 1000 * 60;
-        if(currentTime - cacheTime > 60 * 9) {
+        const currentTime = new Date().getTime() / 1000;
+        console.log(currentTime - cacheTime);
+        if(currentTime - cacheTime > 9 * 60) {
             for (let i = 1; i <= 151; i++) {
                 const img = new Image();
                 img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`;
