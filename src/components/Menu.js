@@ -4,7 +4,7 @@ function Menu({ score, bestScore, level }) {
             <div id="score" className="menu-item">
                 Score: {score}
             </div>
-            <div id="title" className="menu-item big">
+            <div id="level" className="menu-item big">
             Level {level}
             </div>
             <div id="hiscore" className="menu-item">

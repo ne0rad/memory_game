@@ -38,7 +38,6 @@ function Gameboard({ updateScore, updateLevel }) {
     function handleCardClick(id) {
         const index = correct.indexOf(id);
         if (index !== -1) {
-            cardGlow(true);
             updateScore(true);
             const tempCorrect = [...correct];
             tempCorrect.splice(index, 1);
@@ -56,7 +55,6 @@ function Gameboard({ updateScore, updateLevel }) {
         } else {
             updateScore(false);
             updateLevel(false);
-            cardGlow(false);
             const randomPokemon = generateRandomPokemon(3);
             setPokemon(randomPokemon);
             setCorrect(randomPokemon);
@@ -73,36 +71,6 @@ function Gameboard({ updateScore, updateLevel }) {
             array[randomIndex] = temporaryValue;
         }
         return array;
-    }
-
-
-    function cardGlow(color) {
-        // Add glow to the card depending if right or wrong
-        let score = document.getElementById('score');
-        let hiscore = document.getElementById('hiscore');
-        let title = document.getElementById('title');
-
-        if (!color) {
-            score.classList.add('red-glow');
-            hiscore.classList.add('red-glow');
-            title.classList.add('red-glow');
-
-            setTimeout(() => {
-                score.classList.remove('red-glow');
-                hiscore.classList.remove('red-glow');
-                title.classList.remove('red-glow');
-            }, 500);
-        } else {
-            score.classList.add('green-glow');
-            hiscore.classList.add('green-glow');
-            title.classList.add('green-glow');
-
-            setTimeout(() => {
-                score.classList.remove('green-glow');
-                hiscore.classList.remove('green-glow');
-                title.classList.remove('green-glow');
-            }, 500);
-        }
     }
 
     return (
